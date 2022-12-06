@@ -51,8 +51,43 @@ const orderTotal = async (req,res)=>{
     }
 }
 
+const updateOrder = async (req,res)=>{
+    try{
+        const price = await OrderService.updateOrder(req.params.id,req.body);
+        return res.status(200).json({
+            success:true,
+            msg:"Order updated.",
+            data:price
+        })
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({
+            success:false,
+            msg:"Something went wrong."
+        })
+    }
+}
+
+const deleteItemFromOrder = async (req,res)=>{
+    try{
+        const order = await OrderService.deleteItemFromOrder(req.body);
+        return res.status(200).json({
+            success:true,
+            msg:"Order updated.",
+            data:price
+        })
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({
+            success:false,
+            msg:"Something went wrong."
+        })
+    }
+}
 module.exports = {
     addItem,
     getOrder,
-    orderTotal
+    orderTotal,
+    updateOrder,
+    deleteItemFromOrder
 }

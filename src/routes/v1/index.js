@@ -18,4 +18,6 @@ router.get('restaurant/:id',restaurantController.getAllFoodItems);
 router.post('/order',orderController.addItem);
 router.get('/order/:id',orderController.getOrder);
 router.get('/order/:id/total',orderController.orderTotal);
+router.patch('/order/:id',orderController.updateOrder)
+router.patch('/order',orderController.deleteItemFromOrder)
 module.exports = router;
