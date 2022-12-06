@@ -37,7 +37,22 @@ const getOrder = async (id) =>{
     }
 }
 
+const totalPrice = async (id)=>{
+    try{
+        const order = await Order.findById(id).populate('food');
+        let totalPrice = 0;
+
+        order.food.forEach((foodItem)=>{
+            totalPrice+= foodItem.price;
+        })
+        return totalPrice;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 module.exports = {
     createOrder,
-    getOrder
+    getOrder,
+    totalPrice
 }

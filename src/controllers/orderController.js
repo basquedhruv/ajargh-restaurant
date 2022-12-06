@@ -34,7 +34,25 @@ const getOrder = async (req, res)=>{
     }
 }
 
+const orderTotal = async (req,res)=>{
+    try{
+        const price = await OrderService.totalPrice(req.params.id);
+        return res.status(200).json({
+            success:true,
+            msg:"Price returned.",
+            data:price
+        })
+    }catch(err){
+        console.log(err);
+        return res.status(500).json({
+            success:false,
+            msg:"Something went wrong."
+        })
+    }
+}
+
 module.exports = {
     addItem,
-    getOrder
+    getOrder,
+    orderTotal
 }
