@@ -1,7 +1,9 @@
 
 # Food Order API
 
-An api to create delete update schedule of order and User.
+Implements the functions of an Food delivary Website that performs various functions like sign up, log out, add to
+cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB.
+
 
 
 
