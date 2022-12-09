@@ -21,7 +21,7 @@ app.use(function (err,req,res,next){
     });
 })
 
-app.listen(3000, async () => {
+app.listen(5000, async () => {
     // this callback will be executed every time server starts
     console.log("Running...");
     await connect();
