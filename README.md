@@ -1,7 +1,7 @@
 
 # Food Order API
 
-Implements the functions of an Food delivary Website that performs various functions like sign up, log out, add to
+Implemented the functions of an Food delivary Website that performs various functions like sign up, log out, add to
 cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB.
 
 
