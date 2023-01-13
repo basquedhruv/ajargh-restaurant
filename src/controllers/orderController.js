@@ -53,11 +53,11 @@ const orderTotal = async (req,res)=>{
 
 const updateOrder = async (req,res)=>{
     try{
-        const price = await OrderService.updateOrder(req.params.id,req.body);
+        const order = await OrderService.updateOrder(req.params.id,req.body);
         return res.status(200).json({
             success:true,
             msg:"Order updated.",
-            data:price
+            data:order
         })
     }catch(err){
         console.log(err);
@@ -74,7 +74,7 @@ const deleteItemFromOrder = async (req,res)=>{
         return res.status(200).json({
             success:true,
             msg:"Order updated.",
-            data:price
+            data:order
         })
     }catch(err){
         console.log(err);

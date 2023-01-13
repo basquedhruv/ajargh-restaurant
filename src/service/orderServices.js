@@ -10,13 +10,13 @@ const createOrder = async (data) => {
             order = await Order.findById(data.order);
             if (order.status != 'Cart') {
                 console.log("Order can't be modified.");
-                return
+                return order
             }
         } else {
 
-            const order = await new Order({ user: data.user, status: "Cart" });
+            order = await new Order({ user: data.user, status: "Cart" });
         }
-        restaurant.food.forEach((foodItem, index) => {
+        restaurant.food.forEach((foodItem) => {
             if (foodItem._id == data.food) {
                 order.food.push(foodItem);
             }
