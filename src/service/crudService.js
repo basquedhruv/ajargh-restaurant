@@ -1,4 +1,4 @@
-const create = async (model,date)=>{
+const create = async (model,data)=>{
     try{
         const res = await new model(data).save();
         return res;

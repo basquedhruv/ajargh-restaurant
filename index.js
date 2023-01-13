@@ -1,6 +1,5 @@
 const express = require('express');
 const { connect } = require("./src/config/database");
-const User = require('./src/models/user')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const apiRouter = require('./src/routes/index');

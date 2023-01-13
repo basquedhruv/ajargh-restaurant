@@ -21,8 +21,33 @@ cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `email` | `string` | **Required**. Email|
-| `password` | `string` | **Required**. Password|
+| `email`   | `string` | **Required**. Email        |
+| `password`| `string` | **Required**. Password     |
+
+**Example** :
+```example
+    {
+      "email":"litunnayak@hotmail.com",
+      "password":"litunnayak@foodistan"
+    }
+```
+**Output**:
+```example
+  {
+    "success": true,
+    "msg": "Signup successfully",
+    "data": {
+        "user": {
+            "email": "litunnayak@hotmail.com",
+            "password": "$2b$10$gBfnnKw4FETma7Aps6WzT.BENAyt03ZyLdkbgkltAn6eI.3Joj.i2",
+            "_id": "63c0f5579b912946ada52a7d",
+            "createdAt": "2023-01-13T06:08:23.060Z",
+            "updatedAt": "2023-01-13T06:08:23.060Z",
+            "__v": 0
+        }
+    }
+  }
+```
 
 
 #### Login user
@@ -36,9 +61,27 @@ cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB
 | `email` | `string` | **Required**. Email|
 | `password` | `string` | **Required**. Password|
 
-```Token
-After Login a Token will be generate which will be used for authenticate the user
+
+**Example** :
+```example
+    {
+      "email":"litunnayak@hotmail.com",
+      "password":"litunnayak@foodistan"
+    }
 ```
+
+**Output**:
+```example
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5MDEzOH0.Lzk06HCfsAR_zepSJDglhYcNegYGy_58bA84GdDYdhA",
+    "success": true,
+    "msg": "Successfully signed in"
+  }
+```
+
+**Note** :After Login a Token will be generate which will be used for authenticate the user
+
+
 ####Access Token for all api
 
 | Params | Type     | Description                |

@@ -8,11 +8,11 @@ const orderController = require('../../controllers/orderController')
 
 router.get('/help', helpController.helpDetails);
 router.post('/food', foodController.create);
-router.delete('/food/:id', foodController.destroy);
+router.delete('/food/:id/:restaurantId', foodController.destroy);
 
 router.post('/restaurant', restaurantController.create);
-router.delete('/food/:id', restaurantController.destroy);
-router.get('restaurant/:id',restaurantController.getAllFoodItems);
+router.delete('/restaurant/:id', restaurantController.destroy);
+router.get('/restaurant/:id',restaurantController.getAllFoodItems);
 
 
 router.post('/order',orderController.addItem);

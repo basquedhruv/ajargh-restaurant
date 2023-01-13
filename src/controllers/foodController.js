@@ -14,11 +14,12 @@ const create = async (req, res) => {
         res.status(500).json({ msg: "Something went wrong.", success: false });
     }
 }
+
 const destroy = async (req, res) => {
     try {
         const restaurant = await crud.getById(Restaurant, req.params.restaurantId);
         restaurant.food.forEach((foodItem, index, object) => {
-            if (foodItem.id == req.params.id) {
+            if (foodItem._id == req.params.id) {
                 object.splice(index, 1);
             }
         })
