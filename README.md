@@ -10,9 +10,6 @@ cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB
 ## API Reference
 
 
-
-
-
 #### Sign up user
 
 ```http
@@ -79,30 +76,49 @@ cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB
   }
 ```
 
-**Note** :After Login a Token will be generate which will be used for authenticate the user
+**Note** :After Login a Token will be generate which will be used for authenticate the user 
 
 
-####Access Token for all api
+#### Access Token for all api
 
-| Params | Type     | Description                |
+| Query Params | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `secret_token` | `string` | **Required**. token|
 
 
+#### Add restaurant
 
+```http
+  POST localhost:5000/api/v1/restaurant
+```
+
+| Body(x-www-form-urlencoded) | Type     | Description  |
+| :-------- | :------- | :------------------------- |
+| `name`    | `string` | **Required**. Name of the food item |
+
+#### Example
+```
+    localhost:5000/api/v1/restaurant?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
 
 
 
 #### Add Food Items to database
 
 ```http
-  POST localhost:5000/
+  POST localhost:5000/api/v1/food
 ```
 
-| Parameter | Type     | Description                |
+| Body(x-www-form-urlencoded) | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `name`    | `string` | **Required**. Name of the food item |
 | `price` | `integer` | **Required**.  price of that item|
+| `restaurant` | `ObjectId` | **Required**.  Name of the restaurant|
+
+#### Example
+```
+  localhost:5000/api/v1/food?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
 
 
 #### Delete Food
@@ -111,37 +127,140 @@ cart, and much more, developed using Nodejs, express.js, JavaScript, and mongoDB
   DELETE localhost:5000/api/v1/food/:id
 ```
 
-| Parameter | Type     | Description                |
+| Path Params | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`    | `string` | **Required**. Id of the food |
+| `id`    | `ObjectId` | **Required**. Id of the food |
 
+#### Example
 
-
-
-
-
-#### Create restaurant
-
-```http
-  POST localhost:5000/api/v1/restaurant
+```
+  localhost:5000/api/v1/food/63c1132e8f76cb23ebd01019/63c1119c8f76cb23ebd0100c?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzYyNzA1M30.FmAymtWpzL-eiFuI1D9KPidU5t8PJgCq_lws69HRdG0
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `name`    | `string` | **Required**. Name of the restaurant |
-| `address` | `string` | **Required**. Address of the restaurant |
-| `Foods` | `string` | **Required**. Foods  |
-
-
-#### Show List of all food item
+#### Show List of all food items of a restaurant
 
 ```http
   GET localhost:5000/api/v1/restaurant/:id
 ```
 
-| Parameter | Type     | Description                |
+| Path Params | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `id`    | `string` | **Required**. Restaurant id |
+| `id`    | `ObjectId` | **Required**. Restaurant id |
+
+#### Example URL
+
+```
+  localhost:5000/api/v1/restaurant/63c1119c8f76cb23ebd0100c?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzYyNzA1M30.FmAymtWpzL-eiFuI1D9KPidU5t8PJgCq_lws69HRdG0
+```
+
+
+#### Delete restaurant from database
+
+```http
+  DELETE localhost:5000/api/v1/restaurant/:id
+```
+
+| Path Params | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`    | `ObjectId` | **Required**. Restaurant id |
+
+#### Example URL
+
+```
+  localhost:5000/api/v1/restaurant/63c111e18f76cb23ebd0100e?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzYyNzA1M30.FmAymtWpzL-eiFuI1D9KPidU5t8PJgCq_lws69HRdG0
+```
+#### Order Food
+
+```http
+  PUT localhost:5000/api/v1/order
+```
+
+| Body(x-www-form-urlencoded) | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `restaurant`    | `ObjectId` | **Required**. Restaurant id |
+| `food`    | `ObjectId` | **Required**. Food id |
+
+
+#### Example URL
+
+```example
+  localhost:5000/api/v1/order?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+
+
+#### Get Order By Id
+
+```http
+  GET localhost:5000/api/v1/order/:id
+```
+
+| Path Params | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `Order Id`    | `ObjectId` | **Required**. Order id |
+
+```example
+  localhost:5000/api/v1/order/63c197e7c63ce3740cc8c3fc?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+
+#### Put Items to cart and order
+```http
+  POST localhost:5000/api/v1/order
+```
+
+| Body(x-www-form-urlencoded) | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `restaurant`    | `ObjectId` | **Required**. Restaurant id |
+| `food`    | `ObjectId` | **Required**. Food id |
+| `order`    | `ObjectId` | **Required**. Order id |
+
+```example
+  localhost:5000/api/v1/order?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+#### Get Total price of order
+
+```http
+  GET localhost:5000/api/v1/order/:id
+```
+| Body(x-www-form-urlencoded) | Type     | Description|
+| :-------- | :------- | :------------------------- |
+| `id`    | `ObjectId` | **Required**. Order id |
+
+```example
+    localhost:5000/api/v1/order/63c197e7c63ce3740cc8c3fc/total?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+
+#### Update Order
+
+```http
+  PATCH localhost:5000/api/v1/order/:id
+```
+| Body(x-www-form-urlencoded) | Type     | Description|
+| :-------- | :------- | :------------------------- |
+| `status`    | `string` | **Required**. status of order |
+
+| Path Params | Type     | Description|
+| :-------- | :------- | :------------------------- |
+| `id`    |  `ObjectId` | **Required**. Order Id |
+
+#### Example:
+```example
+    localhost:5000/api/v1/order/63c197e7c63ce3740cc8c3fc?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+
+#### Update Order
+
+```http
+  PATCH localhost:5000/api/v1/order
+```
+| Body(x-www-form-urlencoded) | Type     | Description|
+| :-------- | :------- | :------------------------- |
+| `id`    | `ObjectId` | **Required**. Order Id |
+| `food`    | `ObjectId` | **Required**. Food Id |
+
+```example
+  localhost:5000/api/v1/order?secret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYzBmNTU3OWI5MTI5NDZhZGE1MmE3ZCIsImVtYWlsIjoibGl0dW5uYXlhazA5QGhvdG1haWwuY29tIn0sImlhdCI6MTY3MzU5NDgwNn0.u6XifNi20m7P8P9bIZ08vedgZk3TPdovZKVnibUJ5Nk
+```
+
 
 ## Badges
 
