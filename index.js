@@ -21,10 +21,10 @@ app.use(function (err,req,res,next){
 })
 
 app.listen(5000, async () => {
-    // this callback will be executed every time server starts
+    
     console.log("Running...");
     await connect();
     console.log("Mongo db connected successfully.")
     console.log("Server started successfully.");
-    // let user = await User.create({ email: "nayaklitun9@gmail.com", password: 12453, username: "Litun" });
+    
 })
