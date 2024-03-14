@@ -20,14 +20,14 @@ app.use(function (err,req,res,next){
     });
 })
 
-app.listen(5000, async () => {
+app.listen(3001, async () => {
     
     console.log("Running...");
     await connect();
     console.log("Mongo db connected successfully.")
     console.log("Server started successfully.");
     
-    
+
 })
 
 
